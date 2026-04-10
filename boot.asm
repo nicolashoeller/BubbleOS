@@ -8,6 +8,8 @@ start:
     call print
     jmp $
 
+
+; Prints a null-terminated string pointed to by SI
 print:
     mov bx, 0
 
@@ -21,6 +23,7 @@ print:
 .done:
     ret
 
+; Prints a single character in AL
 print_char:
     mov ah, 0eh
     int 0x10
@@ -30,5 +33,8 @@ print_char:
 welcome_message: db "Bitch ass nigga, EFN!", 0xA, 0
 welcome_philipp_message: db "BOAAHHHH PHILIPP DU GEILE SAU, LECK EIER!!!", 0
 
+; Pad the rest of the boot sector with zeros
 times 510 - ($ - $$) db 0
+
+; Boot signature
 dw 0xAA55 ; 0x55AA in big endian
