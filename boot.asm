@@ -11,8 +11,6 @@ start:
 
 ; Prints a null-terminated string pointed to by SI
 print:
-    mov bx, 0
-
 .print_loop:
     lodsb
     cmp al, 0
