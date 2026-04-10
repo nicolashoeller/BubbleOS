@@ -4,8 +4,6 @@ ORG 0x7c00
 start:
     mov si, welcome_message
     call print
-    mov si, welcome_philipp_message
-    call print
     jmp $
 
 
@@ -28,8 +26,7 @@ print_char:
     ret
 
 
-welcome_message: db "Bitch ass nigga, EFN!", 0xA, 0
-welcome_philipp_message: db "BOAAHHHH PHILIPP DU GEILE SAU, LECK EIER!!!", 0
+welcome_message: db "Welcome to BubbleOS!", 0xA, 0
 
 ; Pad the rest of the boot sector with zeros
 times 510 - ($ - $$) db 0
