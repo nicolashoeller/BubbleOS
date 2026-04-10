@@ -1,0 +1,45 @@
+# Build artifacts
+*.o
+*.a
+*.so
+*.elf
+*.bin
+*.iso
+*.img
+build/
+dist/
+target/
+
+# Object files and dependencies
+*.d
+*.swp
+*.swo
+*~
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+
+# OS-specific files
+Thumbs.db
+.directory
+
+# Compiler outputs
+*.dSYM/
+*.su
+
+# Bootloader and kernel specific
+bootloader/*.bin
+bootloader/*.elf
+kernel/*.elf
+kernel/vmlinux*
+
+# Temporary files
+*.tmp
+*.log
+
+# System files
+*.core
