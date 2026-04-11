@@ -2,10 +2,12 @@ BITS 16
 ORG 0x7c00
 
 start:
+    mov ax, 0x0003
+    int 0x10 ; Clear the screen 
+
     mov si, welcome_message
     call print
     jmp $
-
 
 ; Prints a null-terminated string pointed to by SI
 print:
@@ -13,18 +15,12 @@ print:
     lodsb
     cmp al, 0
     je .done
-    call print_char
+    mov ah, 0eh
+    int 0x10
     jmp .print_loop
 
 .done:
     ret
-
-; Prints a single character in AL
-print_char:
-    mov ah, 0eh
-    int 0x10
-    ret
-
 
 welcome_message: db "Welcome to BubbleOS!", 0xA, 0
 
