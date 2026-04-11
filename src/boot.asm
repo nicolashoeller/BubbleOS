@@ -2,25 +2,20 @@ BITS 16
 ORG 0x7c00
 
 start:
-    call init_segments
-
-    call clear_screen
-
-    mov si, welcome_message
-    call print
-    jmp $
-
-; Initialize the segment registers and stack
-init_segments:
 ; Initialize the data segment registers
     mov ax, 0
     mov ds, ax
     mov es, ax
 
 ; Set up the stack
-    mov sp, 0x7c00
+    mov sp, 0x7c00 
     mov ss, ax
-    ret
+
+    call clear_screen
+
+    mov si, welcome_message
+    call print
+    jmp $
 
 ; Clear the screen using BIOS interrupt 0x10
 clear_screen:
@@ -31,7 +26,7 @@ clear_screen:
 ; Prints a null-terminated string pointed to by SI
 print:
 .print_loop:
-    lodsb
+    lodsb               ; Load byte at SI into AL and increment SI
     cmp al, 0
     je .done
     mov ah, 0eh
