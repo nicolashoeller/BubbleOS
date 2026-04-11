@@ -2,12 +2,16 @@ BITS 16
 ORG 0x7c00
 
 start:
-    mov ax, 0x0003
-    int 0x10 ; Clear the screen 
+    call clear_screen
 
     mov si, welcome_message
     call print
     jmp $
+
+clear_screen:
+    mov ax, 0x0003
+    int 0x10 ; Clear the screen 
+    ret
 
 ; Prints a null-terminated string pointed to by SI
 print:
@@ -22,7 +26,7 @@ print:
 .done:
     ret
 
-welcome_message: db "Welcome to BubbleOS!", 0xA, 0
+welcome_message: db "Welcome to BubbleOS!", 0xD, 0xA, 0
 
 ; Pad the rest of the boot sector with zeros
 times 510 - ($ - $$) db 0
