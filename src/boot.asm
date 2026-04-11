@@ -2,12 +2,27 @@ BITS 16
 ORG 0x7c00
 
 start:
+    call init_segments
+
     call clear_screen
 
     mov si, welcome_message
     call print
     jmp $
 
+; Initialize the segment registers and stack
+init_segments:
+; Initialize the data segment registers
+    mov ax, 0
+    mov ds, ax
+    mov es, ax
+
+; Set up the stack
+    mov sp, 0x7c00
+    mov ss, ax
+    ret
+
+; Clear the screen using BIOS interrupt 0x10
 clear_screen:
     mov ax, 0x0003
     int 0x10 ; Clear the screen 
