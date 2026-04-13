@@ -24,9 +24,9 @@ bdb_total_sectors_large:    dd 0
 
 
 ; extended boot record (FAT 12)
-ebr_drive_number:           db 0
-ebr_reserved:               db 0
-ebr_signature:              db 0x29
+ebr_drive_number:            db 0
+ebr_reserved:                db 0
+ebr_signature:               db 0x29
 ebr_volume_id:              dd 0x12345678
 ebr_volume_label:           db 'BubbleOS   ' ; 11 bytes
 ebr_system_id:              db 'FAT12   ' ; 8 bytes
